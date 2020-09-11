@@ -16,6 +16,15 @@ namespace AdMobSample
         public MainPage()
         {
             InitializeComponent();
+
+            IInterstitialAd adInterstitial = DependencyService.Get<IInterstitialAd>();
+            adInterstitial.Show();
+            adInterstitial.AdReceived += AdInterstitial_AdReceived;
+        }
+
+        private void AdInterstitial_AdReceived(object sender, EventArgs e)
+        {
+            this.adText.Text = "After Ads";
         }
     }
 }

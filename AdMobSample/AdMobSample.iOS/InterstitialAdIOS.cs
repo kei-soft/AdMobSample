@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 
+using AdMobSample.iOS;
+
 using Google.MobileAds;
 
 using UIKit;
-
-using AdMobSample.iOS;
 
 using Xamarin.Forms;
 
@@ -14,8 +14,9 @@ namespace AdMobSample.iOS
 {
     public class InterstitialAdIOS : IInterstitialAd
     {
-        Interstitial interstitialAd;
         public event EventHandler AdReceived;
+
+        Interstitial interstitialAd;
 
         public async void Show()
         {
@@ -34,7 +35,7 @@ namespace AdMobSample.iOS
         {
             Device.BeginInvokeOnMainThread(() => this.interstitialAd.PresentFromRootViewController(UIApplication.SharedApplication.Windows[0].RootViewController));
 
-            AdReceived.Invoke(null, null);
+            AdReceived?.Invoke(null, null);
         }
     }
 }

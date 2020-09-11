@@ -34,6 +34,8 @@ namespace AdMobSample.Droid
         public override void OnAdClosed()
         {
             UnMmuteSound();
+
+            AdReceived?.Invoke(this, EventArgs.Empty);
         }
 
         public override void OnAdLoaded()
